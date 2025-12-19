@@ -1,0 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+:root{
+    --white-clr:#fff;
+    --black-clr:#000;
+    --pink-clr:#be6ab0;
+    --orange-clr:#ffa550;
+
+}
+
+
+.main-container{
+    background: var(--black-clr);
+    min-height: 100vh;
+}
+.container{
+    width: 85%;
+    background: var(--black-clr);
+    min-height: 100vh;
+    margin: auto;
+}
+.logo{
+    color: var(--orange-clr);
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 1rem;
+}
+.navbar{
+    height: 14vh;
+    background:rgb(255, 80, 121);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.navlist{
+    display: flex;
+    gap: 2.5rem;
+}
+.navlinks{
+    color: var(--white-clr);
+    position: relative;
+    font-size: 0.9rem;
+    letter-spacing: 0.08rem;
+    text-transform: uppercase;
+}
+.navlinks:hover{
+    color: blueviolet;
+}
+.navlinks::before{
+    content: '';
+    position: absolute;
+    background: yellow;
+    width: 0;
+    height: 0.1rem;
+    bottom: -10px;
+    left: 0;
+    transition: 1s ease-in-out;
+}
+.navlinks:hover::before{
+    width: 100%;
+}
+.hamburger{
+    display: none;
+    z-index: 10; /* Ensure hamburger is clickable */
+}
+.fa-bars{
+    font-size: 1.7rem;
+    color:var(--white-clr);
+}
+img{
+    max-width: 100%;
+    height: auto;
+    
+}
+.image-container{
+    width: 24rem;
+    position: relative;
+   
+}
+.image-container::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--orange-clr);
+    border-radius: 50%;
+    z-index: -1;
+    transform: rotate(45deg);
+}
+.hero-section{
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    gap: 13rem;
+}
+.image-container::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background:linear-gradient(
+        transparent,var(--black-clr)80%
+    );
+    height: 6rem;
+    width: 100%;
+}
+h4{
+  color: var(--orange-clr);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.2rem;
+}
+h1{
+    color: var(--white-clr);
+    font-size: 4rem;
+}
+span{
+    color: lightcoral;
+    font-size: 4rem;
+}
+p{
+    max-width: 400px;
+    color:var(--white-clr);
+    font-size:0.95rem ;
+    line-height: 1.6rem;
+}
+.btn-container{
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+
+}
+button{
+    background: var(--orange-clr);
+    font-size: 0.9rem;
+    border: 0.1rem solid palevioletred;
+    padding: 0.7rem 1.8rem;
+    border-radius: 5rem;
+    cursor: pointer;
+}
+.border-btn{
+    background: var(--pink-clr);
+    color: #000;
+}
+.border-btn:hover{
+    background: black;
+    color:white;
+
+
+}
+
+/* --- Styles for JavaScript Features --- */
+
+/* 1. Mobile Navbar */
+@media (max-width: 768px) {
+    .navlist {
+        position: absolute;
+        top: 14vh; /* Position below the navbar */
+        right: 0;
+        width: 100%;
+        background: rgb(255, 80, 121);
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out;
+        z-index: 5;
+    }
+
+    .navlist.active {
+        max-height: 500px; /* A large enough value to show all links */
+    }
+
+    .hamburger {
+        display: block; /* Show the hamburger on mobile */
+    }
+
+    .hero-section {
+        flex-direction: column-reverse;
+        gap: 2rem;
+        padding-top: 2rem;
+    }
+}
+
+/* 2. Typewriter Cursor Effect */
+.hero-section .content h1 span {
+    border-right: 0.15em solid var(--orange-clr);
+    animation: blink-caret .75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--orange-clr); }
+}
+
+/* 3. Scroll Animation */
+.project-card, .skill-item, .about-container, .contact-container {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.project-card.visible, .skill-item.visible, .about-container.visible, .contact-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
